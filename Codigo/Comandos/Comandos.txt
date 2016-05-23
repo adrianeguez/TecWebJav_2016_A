@@ -1,0 +1,7 @@
+CREAR NUEVA APP
+sails new nombreApp
+CREAR NUEVO MODELO
+sails generate api nombreModelo
+levantar el servidor
+sails lift
+opcion:2
