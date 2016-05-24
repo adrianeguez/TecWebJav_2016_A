@@ -25,12 +25,25 @@ module.exports = {
     },
     geoFinY: {
       type: 'string'
-      ,
+    },
     fechaInicio: {
       type: 'date'
     },
     fechaFin: {
       type: 'date'
+    },
+    idUsuarios:{
+        model:"usuarios"//Foreign key de la tabla "Usuarios"
     }
   }
 };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

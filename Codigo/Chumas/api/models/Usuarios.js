@@ -22,10 +22,11 @@ module.exports = {
         },
         password:{
             type:"string"
+        },
+        chumas:{
+            collection: "chumas", //Tabla Hijo
+            via: "idUsuarios"//Campo Foreign Key de la tabla Hijo
         }
-        
-        
-
     }
 };
 

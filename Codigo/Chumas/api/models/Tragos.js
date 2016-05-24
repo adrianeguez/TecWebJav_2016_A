@@ -12,15 +12,26 @@ module.exports = {
       type: 'string'
     },
     tamano: {
-      type: 'string'
+      type: 'string',
+      enum:['Pequeno','Mediano','Grande']
     },
     grados: {
       type: 'string'
     },
     tipo: {
-      type: 'string'
+      type: 'string',
+      enum:['Ron','Vodka','Tequila','Mezcal','Anisados','Puntas','Whisky']
     }
 
   }
 };
+
+
+
+
+
+
+
+
+
 
