@@ -14,7 +14,7 @@ module.exports.bootstrap = function (cb) {
 
     // CREACION DE USUARIOS
 
-        //Variables de Usuario a ser Ingresadas
+    //Variables de Usuario a ser Ingresadas
     var usuarioWalter = {
         nombre: "Walter"
         , apellido: "Mercado"
@@ -38,25 +38,58 @@ module.exports.bootstrap = function (cb) {
         }
         //Variables de Tragos a ser Ingresados
     var tragoZhumirSandia = {
-            marca: "Zhumir Sandia"
-            , tamano: "Mediano"
-            , grados: "23"
-            , tipo: "Anisados"
-        }
+        marca: "Zhumir Sandia"
+        , tamano: "Mediano"
+        , grados: "23"
+        , tipo: "Anisados"
+    }
     var tragoTequilaCuervo = {
-            marca: "Tequila Cuervo Gold"
-            , tamano: "Mediano"
-            , grados: "45"
-            , tipo: "Tequila"
-        }
+        marca: "Tequila Cuervo Gold"
+        , tamano: "Mediano"
+        , grados: "45"
+        , tipo: "Tequila"
+    }
     var tragoJhonnyNegro = {
             marca: "Whisky Jhonny Negro"
             , tamano: "Grande"
             , grados: "50"
             , tipo: "Whisky"
         }
+        //Variables de Chumas a ser Ingresados
+    var chumaGrado = {
+        razon: "Grado"
+        , descripcion: "Fue el Grado de mi Pana Walter que ahora es Ingeniero en Sistemas"
+        , geoInicioX: "-0.210243"
+        , geoInicioY: "-78.489298"
+        , geoFinX: "-0.208104"
+        , geoFinY: "-78.497431"
+        , fechaInicio: "2016-06-13"
+        , fechaFin: "2016-06-14"
 
-        //Funciones para crear base
+    }
+    var chumaBautizo = {
+        razon: "Bautizo"
+        , descripcion: "Fue el Bautizo de mi prima Mayra en Guapulo"
+        , geoInicioX: "-0.210243"
+        , geoInicioY: "-78.489298"
+        , geoFinX: "-0.208104"
+        , geoFinY: "-78.497431"
+        , fechaInicio: "2016-04-13"
+        , fechaFin: "2016-04-13"
+
+    }
+    var chumaSolBielero = {
+        razon: "Sol Bielero"
+        , descripcion: "Empezamos a tomar y no paramos hasta el siguiente dia."
+        , geoInicioX: "-0.210243"
+        , geoInicioY: "-78.489298"
+        , geoFinX: "-0.208104"
+        , geoFinY: "-78.497431"
+        , fechaInicio: "2016-02-13"
+        , fechaFin: "2016-02-14"
+
+    }
+    //Funciones para crear base
 
     function crearUsuario(usuario) {
         if (usuario) {
@@ -68,6 +101,19 @@ module.exports.bootstrap = function (cb) {
                         console.log(errorServidor);
                     } else {
                         console.log('Se creo el Usuario: ' + usuarioCreado.nombre);
+                        
+                        var chumaLocal1 = chumaBautizo;
+                        var chumaLocal2 = chumaGrado;
+                        var chumaLocal3 = chumaSolBielero;
+                        return usuarioCreado.id;
+                        
+                        chumaLocal1.idUsuarios = usuarioCreado.id;
+                        chumaLocal2.idUsuarios = usuarioCreado.id;
+                        chumaLocal3.idUsuarios = usuarioCreado.id;
+                        
+                        crearChumas(chumaLocal1);
+                        crearChumas(chumaLocal2);
+                        crearChumas(chumaLocal3);
                     }
 
                 });
@@ -76,9 +122,9 @@ module.exports.bootstrap = function (cb) {
         }
 
     }
-    function crearTragos(trago){
-        if(trago){
-            
+    function crearTragos(trago) {
+        if (trago) {
+
             Tragos
                 .create(trago)
                 .exec(function respuestaServidor(errorServidor, tragoCreado) {
@@ -90,34 +136,41 @@ module.exports.bootstrap = function (cb) {
                     }
 
                 });
-        
-        }else{
+
+        } else {
             console.log('No envio un trago, ejecute la funcion con un trago');
         }
     }
-    function crearChumas(trago){
-        if(trago){
-            
-            Tragos
-                .create(trago)
-                .exec(function respuestaServidor(errorServidor, tragoCreado) {
+    function crearChumas(chuma) {
+        if (chuma) {
+
+            Chumas
+                .create(chuma)
+                .exec(function respuestaServidor(errorServidor, chumaCreada) {
                     if (errorServidor) {
                         console.log('Hubo un error del servidor');
                         console.log(errorServidor);
                     } else {
-                        console.log('Se creo el Trago: ' + tragoCreado.marca);
+                        console.log('Se creo el Trago: ' + chumaCreada.razon);
                     }
 
                 });
-        
-        }else{
-            console.log('No envio un trago, ejecute la funcion con un trago');
+
+        } else {
+            console.log('No envio una chuma, ejecute la funcion con una chuma');
         }
     }
-
+    
+    
+//    var local1 = chumaBautizo;
+//    var idUsuariosLocal1 = crearUsuario(usuarioWalter);
+//    local1.idUsuarios = idUsuariosLocal1;
+//    crearChumas(local1);
+    
     crearUsuario(usuarioWalter);
     crearUsuario(usuarioAdrian);
     crearUsuario(usuarioCarlos);
+    
     crearTragos(tragoJhonnyNegro);
     crearTragos(tragoTequilaCuervo);
     crearTragos(tragoZhumirSandia);
