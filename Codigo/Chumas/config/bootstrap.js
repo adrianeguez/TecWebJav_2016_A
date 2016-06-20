@@ -106,19 +106,40 @@ module.exports.bootstrap = function (cb) {
     var tragoXChumaTienda = {
         lugarCompra:"Tienda de la Vecina Charito",
         precio:12.6
-    }
-    
+    }    
     var tragoXChumaBar = {
         lugarCompra:"Bar La Vaca",
         precio:25
-    }
-    
+    }  
     var tragoXChumaOldTimes = {
         lugarCompra:"OldTimes",
         precio:28.3
     }
         
     //Funciones para crear base
+    
+    function crearTragosXChuma(tragoXChuma,idChuma,idTrago){
+        if (tragoXChuma) {
+            
+            tragoXChuma.idChuma = idChuma;
+            tragoXChuma.idTrago = idTrago;
+
+            TragosXChuma
+                .create(tragoXChuma)
+                .exec(function respuestaServidor(errorServidor, tragoXChumaCreado) {
+                    if (errorServidor) {
+                        console.log('Hubo un error del servidor');
+                        console.log(errorServidor);
+                    } else {
+                        console.log('Se creo la Trago X Chuma: ' + tragoXChumaCreado.lugarCompra);
+                    }
+
+                });
+
+        } else {
+            console.log('No envio una Trago X Chuma, ejecute la funcion con una Trago X Chuma');
+        }
+    }
 
     function crearUsuario(usuario) {
         if (usuario) {
@@ -190,6 +211,14 @@ module.exports.bootstrap = function (cb) {
                         crearImagenes(imagen1,chumaCreada.id)
                         crearImagenes(imagen2,chumaCreada.id)
                         crearImagenes(imagen3,chumaCreada.id)
+                        
+                        var tragoXchumaLocal1 = tragoXChumaBar;
+                        var tragoXchumaLocal2 = tragoXChumaOldTimes;
+                        var tragoXchumaLocal3 = tragoXChumaTienda;
+                        
+                        crearTragosXChuma(tragoXchumaLocal1,chumaCreada.id,1)
+                        crearTragosXChuma(tragoXchumaLocal2,chumaCreada.id,2)
+                        crearTragosXChuma(tragoXchumaLocal3,chumaCreada.id,3)
                     }
 
                 });

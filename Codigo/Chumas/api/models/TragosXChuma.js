@@ -22,10 +22,15 @@ module.exports = {
     idChuma:{
         model:"chumas"//Foreign key de la tabla "Chuma"
     },
-    idTragos:{
+    idTrago:{
         model:"tragos"//Foreign key de la tabla "Trago"
     }
 
   }
 };
+
+
+
+
+
 
