@@ -89,6 +89,35 @@ module.exports.bootstrap = function (cb) {
         , fechaFin: "2016-02-14"
 
     }
+
+
+    //Variables de Imagenes
+    var imagenChuma1 = {
+            url: "http://www.generadormemes.com/media/created/250/shx63m.jpg"
+        }
+    var imagenChuma2 = {
+            url: "http://pasamoslista.com/wp-content/uploads/2015/03/mejores-memes-de-borrachos-4.jpg"
+        }
+    var imagenChuma3 = {
+            url: "http://www.fotoshumor.com/carpeta/1/original/344581441059800-memes-de-borrachos.jpg"
+        }
+    
+    //Variables de TragosXChuma
+    var tragoXChumaTienda = {
+        lugarCompra:"Tienda de la Vecina Charito",
+        precio:12.6
+    }
+    
+    var tragoXChumaBar = {
+        lugarCompra:"Bar La Vaca",
+        precio:25
+    }
+    
+    var tragoXChumaOldTimes = {
+        lugarCompra:"OldTimes",
+        precio:28.3
+    }
+        
     //Funciones para crear base
 
     function crearUsuario(usuario) {
@@ -101,16 +130,16 @@ module.exports.bootstrap = function (cb) {
                         console.log(errorServidor);
                     } else {
                         console.log('Se creo el Usuario: ' + usuarioCreado.nombre);
-                        
+
                         var chumaLocal1 = chumaBautizo;
                         var chumaLocal2 = chumaGrado;
                         var chumaLocal3 = chumaSolBielero;
-                        return usuarioCreado.id;
-                        
+                       
+
                         chumaLocal1.idUsuarios = usuarioCreado.id;
                         chumaLocal2.idUsuarios = usuarioCreado.id;
                         chumaLocal3.idUsuarios = usuarioCreado.id;
-                        
+
                         crearChumas(chumaLocal1);
                         crearChumas(chumaLocal2);
                         crearChumas(chumaLocal3);
@@ -122,6 +151,7 @@ module.exports.bootstrap = function (cb) {
         }
 
     }
+
     function crearTragos(trago) {
         if (trago) {
 
@@ -133,6 +163,7 @@ module.exports.bootstrap = function (cb) {
                         console.log(errorServidor);
                     } else {
                         console.log('Se creo el Trago: ' + tragoCreado.marca);
+                        
                     }
 
                 });
@@ -141,6 +172,7 @@ module.exports.bootstrap = function (cb) {
             console.log('No envio un trago, ejecute la funcion con un trago');
         }
     }
+
     function crearChumas(chuma) {
         if (chuma) {
 
@@ -151,7 +183,13 @@ module.exports.bootstrap = function (cb) {
                         console.log('Hubo un error del servidor');
                         console.log(errorServidor);
                     } else {
-                        console.log('Se creo el Trago: ' + chumaCreada.razon);
+                        console.log('Se creo la Chuma: ' + chumaCreada.razon);
+                        var imagen1 = imagenChuma1;
+                        var imagen2 = imagenChuma2;
+                        var imagen3 = imagenChuma3;
+                        crearImagenes(imagen1,chumaCreada.id)
+                        crearImagenes(imagen2,chumaCreada.id)
+                        crearImagenes(imagen3,chumaCreada.id)
                     }
 
                 });
@@ -160,20 +198,40 @@ module.exports.bootstrap = function (cb) {
             console.log('No envio una chuma, ejecute la funcion con una chuma');
         }
     }
+
     
-    
-//    var local1 = chumaBautizo;
-//    var idUsuariosLocal1 = crearUsuario(usuarioWalter);
-//    local1.idUsuarios = idUsuariosLocal1;
-//    crearChumas(local1);
-    
+    function crearImagenes(imagen,idChuma) {
+        if (imagen) {
+            imagen.idChuma = idChuma;
+            Imagenes
+                .create(imagen)
+                .exec(function respuestaServidor(errorServidor, imagenCreada) {
+                    if (errorServidor) {
+                        console.log('Hubo un error del servidor');
+                        console.log(errorServidor);
+                    } else {
+                        console.log('Se creo La Imagen: ' + imagenCreada.url);
+                    }
+
+                });
+
+        } else {
+            console.log('No envio una imagen, ejecute la funcion con una imagen');
+        }
+    }
+    //    var local1 = chumaBautizo;
+    //    var idUsuariosLocal1 = crearUsuario(usuarioWalter);
+    //    local1.idUsuarios = idUsuariosLocal1;
+    //    crearChumas(local1);
+
     crearUsuario(usuarioWalter);
     crearUsuario(usuarioAdrian);
     crearUsuario(usuarioCarlos);
-    
+
     crearTragos(tragoJhonnyNegro);
     crearTragos(tragoTequilaCuervo);
     crearTragos(tragoZhumirSandia);
+    
 
 
 

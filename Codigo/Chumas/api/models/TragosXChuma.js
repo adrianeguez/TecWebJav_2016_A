@@ -1,3 +1,8 @@
+
+
+
+
+
 /**
 * TragosXChuma.js
 *
@@ -13,6 +18,12 @@ module.exports = {
     },
     precio:{
       type:"float"
+    },
+    idChuma:{
+        model:"chumas"//Foreign key de la tabla "Chuma"
+    },
+    idTragos:{
+        model:"tragos"//Foreign key de la tabla "Trago"
     }
 
   }

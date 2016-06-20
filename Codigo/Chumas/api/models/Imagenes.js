@@ -11,7 +11,15 @@ module.exports = {
     url: {
       type: 'string'
     },
+    idChuma:{
+        model:"chumas"//Foreign key de la tabla "Chuma"
+    }
 
   }
 };
+
+
+
+
+
 
