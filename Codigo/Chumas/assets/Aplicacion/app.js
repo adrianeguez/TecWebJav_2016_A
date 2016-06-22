@@ -75,9 +75,19 @@ angular.module("nombreaplicacionenminusculas",['Arreglo','de','modulos','de','An
 
 */
 
-var aplicacion = angular.module("chuma",[]);
+var aplicacion = angular.module("chuma",['ui.router']);
 
+aplicacion.config(function($stateProvider, $urlRouterProvider) {
 
+  $urlRouterProvider.otherwise("/");
+    
+  $stateProvider
+    .state('home', {
+      url: "/",
+      templateUrl: "Vistas/Home.html",
+      controller: "HomeCtrl"
+    });
+});
 
 
 
