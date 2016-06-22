@@ -2,7 +2,7 @@
 
 
 
-aplicacion.controller('HomeCtrl',function($scope){
+aplicacion.controller("HomeCtrl",function($scope){
     
     
     $scope.titulo = "Chumas :D"

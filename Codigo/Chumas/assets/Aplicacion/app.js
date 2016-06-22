@@ -1,4 +1,3 @@
-
 //app.js
 
 //CODESCHOOL CURSO BASICO DE JAVASCRIPT
@@ -75,35 +74,29 @@ angular.module("nombreaplicacionenminusculas",['Arreglo','de','modulos','de','An
 
 */
 
-var aplicacion = angular.module("chuma",['ui.router']);
+var aplicacion = angular.module("chuma", ['ui.router']);
 
-aplicacion.config(function($stateProvider, $urlRouterProvider) {
+aplicacion.config(function ($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/");
-    
-  $stateProvider
-    .state('home', {
-      url: "/",
-      templateUrl: "Vistas/Home.html",
-      controller: "HomeCtrl"
-    });
+    $urlRouterProvider.otherwise("/");
+
+    $stateProvider
+        .state('home', {
+            url: "/"
+            , templateUrl: "Vistas/Home.html"
+            , controller: "HomeCtrl"
+        })
+        .state('usuarios', {
+            url: "/usuarios"
+            , templateUrl: "Vistas/Usuarios.html"
+            , controller: "UsuariosCtrl"
+        })
+        .state('tragos', {
+            url: "/tragos"
+            , templateUrl: "Vistas/Tragos.html"
+            , controller: "TragosCtrl"
+        });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

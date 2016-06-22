@@ -1,49 +1,68 @@
-
-
 <DOCTYPE! html>
-<html  ng-app="chuma">
+    <html ng-app="chuma">
+
     <head>
-        
-         
-        
-        
+
+
+
+
     </head>
+    <!--        APLICACION-->
+
+
     <body>
-        
-<!--        APLICACION-->
-               
-               
-               
-               
-               <div ui-view></div>
-               
-                
-<!--        LIBRERIA ANGULAR   "ctrl+/"-->
-        
-        <script src="Librerias/Javascript/angular.min.js"></script>  
-        
-<!--        MODULOS DE LA LIBRERIA ANGULAR-->
-<!--        ctrl+barra espaciador-->
-        <script src="Librerias/Javascript/angular-ui-router.js"></script>  
             
+        <div style="background-color: #d8eeee;">
+            <h1>Menu</h1>
+            <ul>
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/usuarios">Usuarios</a></li>
+                <li><a href="#/tragos">Tragos</a></li>
+            </ul>
+        </div>
         
-<!--        APLICACION (EN NUESTRO CASO LA APLICACION SE LLAMA 'chuma')-->
+        <div style="    background-color: #fccd89;">
+            <h2>Contenido de las vistas</h2>
+            <div ui-view></div>
+        </div>
+        
+        <div style="background-color: #a0e3a7;">
+            <h3>Footer</h3>
+        </div>
+        
+        
+
+
+        <!--        LIBRERIA ANGULAR   "ctrl+/"-->
+
+        <script src="Librerias/Javascript/angular.min.js"></script>
+
+        <!--        MODULOS DE LA LIBRERIA ANGULAR-->
+        <!--        ctrl+barra espaciador-->
+        <script src="Librerias/Javascript/angular-ui-router.js"></script>
+
+
+        <!--        APLICACION (EN NUESTRO CASO LA APLICACION SE LLAMA 'chuma')-->
         <script src="app.js"></script>
-        
-        
-<!--        CONTROLADORES -->
-       <script src="Vistas/HomeCtrl.js"></script>
-        
+
+
+        <!--        CONTROLADORES -->
+        <script src="Vistas/HomeCtrl.js"></script>
+        <script src="Vistas/UsuariosCtrl.js"></script>
+        <script src="Vistas/TragosCtrl.js"></script>
+
     </body>
-</html>
+
+
+
+    </html>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
+  
+ 
+
+
+
+
+
+
