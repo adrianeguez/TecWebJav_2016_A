@@ -1,8 +1,42 @@
-
-
-
 <h2>Usuarios </h2>
 
 
+<h3>Crear Usuarios</h3>
+<div>
+    <form ng-submit="crearUsuario()">
+    <label>Nombre : </label>
+    <input type="text" ng-model="nuevoUsuario.nombre" required>
+    <br>
+    <label>Apellido : </label>
+    <input type="text" ng-model="nuevoUsuario.apellido" required>
+    <br>
+    <label>Correo : </label>
+    <input type="email" ng-model="nuevoUsuario.correo" required>
+    <br>
+    <label>Password : </label>
+    <input type="password" ng-model="nuevoUsuario.password" required>
+    <br>
+    <label>Fecha de Nacimiento : </label>
+    <input type="date" ng-model="nuevoUsuario.fechaNac" required>
+    <br>
+    <button ng-disabled="botonCrearDeshabilitado" type="submit">Crear Usuario</button>
+</form>
+</div>
+<div>
+    <h2>{{nuevoUsuario.nombre}} {{nuevoUsuario.apellido}}</h2>
+    <p>Correo : {{nuevoUsuario.correo}}</p>
+    <p>Fecha Nacimiento : {{nuevoUsuario.fechaNac | date:'medium'}}</p>
+</div>
 
 
+<h3>Lista de Usuarios</h3>
+<ul>
+    <!--   ng-repeat="SingularArreglo in ARREGLO"-->
+    <li ng-repeat="usuario in usuarios">
+        <p>Hola: {{usuario.nombre}} {{usuario.apellido}} </p>
+        <p>{{usuario.correo}}</p>
+        <p>{{usuario.fechaNac | date:'medium'}}</p>
+        <button>Editar</button>
+        <button>Borrar</button>
+    </li>
+</ul>
