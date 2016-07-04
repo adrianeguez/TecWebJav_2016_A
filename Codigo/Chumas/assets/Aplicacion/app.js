@@ -95,8 +95,15 @@ aplicacion.config(function ($stateProvider, $urlRouterProvider) {
             url: "/tragos"
             , templateUrl: "Vistas/Tragos.html"
             , controller: "TragosCtrl"
+        })
+        .state('chumas', {
+            url: "/usuario/:idUsuario/chuma"
+            , templateUrl: "Vistas/Chumas.html"
+            , controller: "ChumasCtrl"
         });
 });
+
+
 
 
 
