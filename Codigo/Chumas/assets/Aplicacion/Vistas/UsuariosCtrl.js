@@ -8,12 +8,12 @@ aplicacion.controller("UsuariosCtrl", function ($scope, $http) {
         , password: ""
         , fechaNac: ""
     }
-    
+
     $scope.botonCrearDeshabilitado = false;
 
 
     $scope.crearUsuario = function () {
-        
+
         $scope.botonCrearDeshabilitado = true;
 
         $http({
@@ -22,13 +22,13 @@ aplicacion.controller("UsuariosCtrl", function ($scope, $http) {
             , data: $scope.nuevoUsuario
         }).then(
             function (respuesta) {
-                
-//                $scope.cargarUsuarios();
+
+                //                $scope.cargarUsuarios();
                 $scope.usuarios.push(respuesta.data);
                 $scope.resetearNuevoUsuario();
-                
+
                 $scope.botonCrearDeshabilitado = false;
-                
+
                 console.log(respuesta);
             }
             , function (error) {
@@ -60,7 +60,7 @@ aplicacion.controller("UsuariosCtrl", function ($scope, $http) {
     }
 
     $scope.resetearNuevoUsuario = function () {
-        
+
         $scope.nuevoUsuario = {
             nombre: ""
             , apellido: ""
@@ -71,6 +71,35 @@ aplicacion.controller("UsuariosCtrl", function ($scope, $http) {
     }
 
     $scope.cargarUsuarios();
+
+    $scope.editarUsuario = function (usuario) {
+
+        if (usuario.nuevaFecha) {
+
+            usuario.fechaNac = usuario.nuevaFecha
+        }
+
+        $http({
+            method: "PUT"
+            , url: "http://localhost:1337/Usuarios/" + usuario.id
+            , data: {
+                nombre: usuario.nombre
+                , apellido: usuario.apellido
+                , correo: usuario.correo
+                , password: usuario.password
+                , fechaNac: usuario.fechaNac
+            }
+        }).then(
+            function (respuesta) {
+                usuario.mostrar = !usuario.mostrar
+            }
+            , function (error) {
+                console.log(error);
+            });
+
+
+
+    }
 
 
 
