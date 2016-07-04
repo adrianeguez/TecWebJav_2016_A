@@ -55,11 +55,17 @@
     <!--   ng-repeat="SingularArreglo in ARREGLO"-->
     <div class="col-sm-4 text-center" ng-repeat="usuario in usuarios" ng-init="usuario.mostrar = true">
         <div ng-show="usuario.mostrar" >
+           
             <h2>Usuario: {{usuario.nombre}} {{usuario.apellido}} </h2>
             <p>{{usuario.correo}}</p>
             <p>{{usuario.fechaNac | date:'medium'}}</p>
+            
             <button class="btn btn-block btn-warning" ng-click="usuario.mostrar = !usuario.mostrar">Editar</button>
+            
             <button class="btn btn-block btn-danger" ng-click="eliminarUsuario(usuario)">Borrar</button>
+            
+            <a class="btn btn-block btn-info" href="#/usuario/{{usuario.id}}/chuma">Editar Chumas</a>
+            
         </div>
         <div ng-hide="usuario.mostrar">
             
