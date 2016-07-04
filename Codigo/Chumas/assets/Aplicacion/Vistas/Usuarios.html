@@ -59,7 +59,7 @@
             <p>{{usuario.correo}}</p>
             <p>{{usuario.fechaNac | date:'medium'}}</p>
             <button class="btn btn-block btn-warning" ng-click="usuario.mostrar = !usuario.mostrar">Editar</button>
-            <button class="btn btn-block btn-danger">Borrar</button>
+            <button class="btn btn-block btn-danger" ng-click="eliminarUsuario(usuario)">Borrar</button>
         </div>
         <div ng-hide="usuario.mostrar">
             

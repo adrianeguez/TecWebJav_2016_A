@@ -73,12 +73,9 @@ aplicacion.controller("UsuariosCtrl", function ($scope, $http) {
     $scope.cargarUsuarios();
 
     $scope.editarUsuario = function (usuario) {
-
         if (usuario.nuevaFecha) {
-
             usuario.fechaNac = usuario.nuevaFecha
         }
-
         $http({
             method: "PUT"
             , url: "http://localhost:1337/Usuarios/" + usuario.id
@@ -96,9 +93,31 @@ aplicacion.controller("UsuariosCtrl", function ($scope, $http) {
             , function (error) {
                 console.log(error);
             });
+    }
+
+    $scope.eliminarUsuario = function (usuario) {
 
 
 
+        $http({
+            method: "DELETE"
+            , url: "http://localhost:1337/Usuarios/" + usuario.id
+        }).then(
+            function (respuesta) {
+
+                for (var i = 0; i < $scope.usuarios.length; i++) {
+                    if ($scope.usuarios[i].id == usuario.id) {
+                        $scope.usuarios.splice(i, 1);
+                    }
+                }
+
+
+
+
+            }
+            , function (error) {
+                console.log(error);
+            });
     }
 
 
