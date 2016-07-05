@@ -100,6 +100,11 @@ aplicacion.config(function ($stateProvider, $urlRouterProvider) {
             url: "/usuario/:idUsuario/chuma"
             , templateUrl: "Vistas/Chumas.html"
             , controller: "ChumasCtrl"
+        })
+        .state('gastos', {
+            url: "/usuario/:idUsuario/chuma/:idChuma/gastos"
+            , templateUrl: "Vistas/Gastos.html"
+            , controller: "GastosCtrl"
         });
 });
 

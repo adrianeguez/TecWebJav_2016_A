@@ -120,7 +120,9 @@ module.exports.bootstrap = function (cb) {
     
     function crearTragosXChuma(tragoXChuma,idChuma,idTrago){
         if (tragoXChuma) {
-            
+            console.log('crearTragosXChuma')
+            console.log(idChuma)
+            console.log(idTrago)
             tragoXChuma.idChuma = idChuma;
             tragoXChuma.idTrago = idTrago;
 
