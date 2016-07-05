@@ -1,0 +1,122 @@
+<h2>Usuarios </h2>
+
+
+<h3>Crear Usuarios</h3>
+
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+        <form ng-submit="crearUsuario()">
+
+            <div class="form-group">
+                <label>Nombre : </label>
+                <input class="form-control" type="text" ng-model="nuevoUsuario.nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido : </label>
+                <input class="form-control" type="text" ng-model="nuevoUsuario.apellido" required>
+            </div>
+
+            <div class="form-group">
+                <label>Correo : </label>
+                <input class="form-control" type="email" ng-model="nuevoUsuario.correo" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password : </label>
+                <input class="form-control" type="password" ng-model="nuevoUsuario.password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Fecha de Nacimiento : </label>
+                <input class="form-control" type="date" ng-model="nuevoUsuario.fechaNac" required>
+            </div>
+
+            <br>
+            <button class="btn btn-block btn-success" ng-disabled="botonCrearDeshabilitado" type="submit">Crear Usuario</button>
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <div>
+            <h1>Usuario por crearse:</h1>
+            <h2>{{nuevoUsuario.nombre}} {{nuevoUsuario.apellido}}</h2>
+            <p>Correo : {{nuevoUsuario.correo}}</p>
+            <p>Fecha Nacimiento : {{nuevoUsuario.fechaNac | date:'medium'}}</p>
+        </div>
+    </div>
+
+</div>
+
+<h3>Lista de Usuarios</h3>
+
+<div class="row">
+    <!--   ng-repeat="SingularArreglo in ARREGLO"-->
+    <div class="col-sm-4 text-center" ng-repeat="usuario in usuarios" ng-init="usuario.mostrar = true">
+        <div ng-show="usuario.mostrar" >
+           
+            <h2>Usuario: {{usuario.nombre}} {{usuario.apellido}} </h2>
+            <p>{{usuario.correo}}</p>
+            <p>{{usuario.fechaNac | date:'medium'}}</p>
+            
+            <button class="btn btn-block btn-warning" ng-click="usuario.mostrar = !usuario.mostrar">Editar</button>
+            
+            <button class="btn btn-block btn-danger" ng-click="eliminarUsuario(usuario)">Borrar</button>
+            
+            <a class="btn btn-block btn-info" href="#/usuario/{{usuario.id}}/chuma">Editar Chumas</a>
+            
+        </div>
+        <div ng-hide="usuario.mostrar">
+            
+
+            
+            <form ng-submit="editarUsuario(usuario)">
+
+            <div class="form-group">
+                <label>Nombre : </label>
+                <input class="form-control" type="text" ng-model="usuario.nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido : </label>
+                <input class="form-control" type="text" ng-model="usuario.apellido" required>
+            </div>
+
+            <div class="form-group">
+                <label>Correo : </label>
+                <input class="form-control" type="email" ng-model="usuario.correo" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password : </label>
+                <input class="form-control" type="password" ng-model="usuario.password" required>
+            </div>
+
+            <div class="form-group" ng-init="usuario.nuevaFecha = ''">
+                <label>Fecha de Nacimiento : </label>
+                <input class="form-control" type="date" ng-model="usuario.nuevaFecha">
+            </div>
+
+            <br>
+            <button class="btn btn-block btn-info" ng-disabled="botonCrearDeshabilitado" type="submit">Actualizar Usuario</button>
+        </form>
+        <button class="btn btn-block" ng-disabled="botonCrearDeshabilitado" ng-click="usuario.mostrar = !usuario.mostrar" >Cancelar</button>
+        
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
